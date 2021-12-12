@@ -212,6 +212,11 @@ public class Character2DMovement : MonoBehaviour
 	     *   * Persistent heading flag: *mHeadingRight*
 	     *   * Rotating a local rotation by an axis: localRotation *= Quaternion.Euler(...)
 	     */
+	    if ((!mHeadingRight && mInput.move.x == 1) || (mHeadingRight && mInput.move.x == -1))
+	    {
+		    this.transform.localRotation *= Quaternion.Euler(0,180,0);
+		    mHeadingRight = !mHeadingRight;
+	    }
 
 	    var animator = mSelector.charAnimator;
 	    if (animator != null)
